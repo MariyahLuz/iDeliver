@@ -1,0 +1,22 @@
+ion-card{
+    text-align: center;
+    padding:8px;
+    color:#fff;
+}
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:100%;
+    text-align: center;
+    padding:30px;
+    h4{
+        color:rgb(114, 114, 114);
+    }
+    small{
+        color:#444;
+    }
+}

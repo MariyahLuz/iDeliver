@@ -1,0 +1,7 @@
+{
+  "name": "iDeliver",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

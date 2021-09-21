@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+  <div class="top" color="primary">
+    <img src="assets/icon/newlogo.svg" /> 
+    <h2>Account Set Up</h2>
+    <small>Set Up your Account on iDeliver</small>
+  </div> <br>
+
+
+<div padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-list>
+      <ion-item>
+        <ion-label>Sign up as</ion-label>
+        <ion-select ngModel  name="type" required>
+          <ion-select-option  value="vender">Vender</ion-select-option>
+          <ion-select-option  value="client">Buyer</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Location</ion-label>
+        <ion-select ngModel  name="location" required>
+          <ion-select-option  value="Kampala">Kampala</ion-select-option>
+          <ion-select-option  value="Wakiso">Wakiso</ion-select-option>
+          <ion-select-option  value="Entebbe">Entebbe</ion-select-option>     
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="text" ngModel  name="name" placeholder="Full name" required ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="tel" ngModel name="phone" placeholder="Phone Number" required   ></ion-input> 
+      </ion-item>
+      
+
+      <ion-item>
+          <ion-input type="Password" ngModel name="password" placeholder="Password" required minilength="6" ></ion-input>
+      </ion-item>
+      
+
+    </ion-list>
+    <small class="error">{{error}}</small>
+    <ion-button  type="submit"  shape="round" style="color:white" expand="block"> Create Account </ion-button>
+     
+  </form>
+  <br/>
+  <div text-center>
+    <small> Clicking create account means you have agreed to <b>iDeliver</b> terms and conditions.</small>
+  </div>
+</div>
+</ion-content>
+<ion-footer text-center padding>
+I have an account, <a routerLink="/login"><b>Login</b></a>
+</ion-footer>

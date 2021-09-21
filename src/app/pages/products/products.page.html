@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar  color="primary" >
+    <ion-title>  Welcome to {{shop.name}}</ion-title>
+    <ion-buttons slot="primary">
+        <ion-button (click)="backToShops()" >
+          <ion-icon  slot="icon-only" name="arrow-undo-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!--code to implement searchbar -->
+
+<ion-searchbar></ion-searchbar> 
+              
+              
+<!-- code that will render a list of products -->
+<ion-content>
+  <br>
+  <ion-list lines="none">
+    <div padding>
+      Available products at <span style="color:#1f8611;">{{shop.name}}</span>
+    </div> <br> 
+
+    <ion-item *ngFor="let product of products " (click)="presentModal(product)"  >
+      <ion-thumbnail slot="start">
+        <img [src]="product.imageUrl"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{product.name}}</h2>
+        <p>Price : {{product.price}}</p>
+        <p>{{product.duration}}</p>
+        <p>{{product.description}}</p>
+      </ion-label>
+      <ion-button slot="end"> Order Product</ion-button>
+    </ion-item> 
+
+  </ion-list>  
+</ion-content>
+
+
+
+
+
+
+

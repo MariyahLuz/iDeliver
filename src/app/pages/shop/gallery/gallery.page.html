@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="shops"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gallery</ion-title>
+  </ion-toolbar>
+</ion-header><br>
+
+<ion-content>
+  <div padding>
+   <span style="color:#1a4207;margin: 10px;">{{shop.name}}'s Gallery</span>
+  </div> <br>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="gotoProducts()" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="empty" *ngIf="pictures?.length === 0 ">
+    <ion-icon name="images"></ion-icon>     
+    <h5>No Pictures in your gallery !</h5>
+    <small>
+      Add Products you have in your shop for advertising. It will help
+      people see your products.
+    </small>
+  </div>
+
+  <ion-row>
+    <ion-col *ngFor="let picture of pictures" class="imgContainer" text-center size="12" sizeMd="4"  sizeXl="3">
+      <img [src]="picture.imageUrl"/> 
+    </ion-col>
+   </ion-row>  
+</ion-content>

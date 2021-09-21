@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar  color="primary" >
+    <ion-title> My Orders </ion-title>
+    <ion-buttons (click)="goToShops()" slot="primary">
+        <ion-button  >
+          <ion-icon slot="icon-only" name="chevron-forward-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="empty"  *ngIf="orders?.length === 0 ">
+    <ion-icon name="notifications"></ion-icon>     
+    <h5>No orders made!</h5>
+    <small>
+      Go shopping and place some orders.
+    </small>
+  </div>
+
+  <br>
+  <ion-list lines="none">
+    <div padding>
+      My Orders  <span style="color:#1f8611;"></span>
+    </div> <br> 
+
+    <ion-item *ngFor="let order of orders" >
+      <ion-thumbnail slot="start">
+        <img [src]="order.product.imageUrl"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{order.product.name}}</h2>
+        <p>Price : {{order.product.price}}</p>
+        <p>Payment on delivery</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="presentActionSheet(order)" *ngIf="order.status === 'new' ">Confirm Order</ion-button>
+      <ion-button fill="outline" color="success" disabled slot="end" *ngIf="order.status === 'confirmed'" >Processing Order</ion-button>
+      <ion-button fill="outline" color="danger" disabled slot="end" *ngIf="order.status === 'canceled'" >Cancelled</ion-button>
+    </ion-item>
+     
+    <ion-segment (click)="goToShops()" >
+      <ion-segment-button value="friends">
+        <ion-label>Back to Shoppping</ion-label> 
+      </ion-segment-button>
+     
+    </ion-segment>
+
+  </ion-list>
+      
+</ion-content>

@@ -1,0 +1,68 @@
+.card-head{
+    padding: 0px;
+    position: relative !important;
+
+}
+
+img{
+    object-fit:cover;
+    width: 100%;
+    
+    
+}
+
+.fab-icon{ 
+    float: right;
+    margin-left: 220px;
+    font-size: 100px;
+    color: rgb(10, 111, 226);
+
+    margin-top: 1px;
+    margin-bottom: 100px;
+    position: fixed;
+}
+.floatingbtn{
+   height: 55px;
+   width: 55px;
+    position: absolute;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    right: 10px;
+    bottom: -30px;
+    border-radius: 50px;
+    background-color: rgb(233, 79, 105);
+}
+.floatingbn{
+    height: 55px;
+    width: 55px;
+    z-index: 100;
+    display:inline-flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    bottom: -40px;
+    left: 10px;
+   background-color: rgb(0, 225, 255)
+}
+.shopName{
+    
+    z-index: 100;
+    display:inline-flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    bottom: 7px;
+    color: white;
+    left: 85px;
+
+}
+.logoutbtn{
+    margin: 10px !important;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: aqua;
+    color: white;
+    margin-bottom: 15px;
+}

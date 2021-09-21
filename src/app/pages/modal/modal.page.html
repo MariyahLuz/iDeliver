@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Make  An Order</ion-title>
+    <ion-buttons slot="end" (click)=" close()">
+     <ion-label>Close</ion-label>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-card>
+    <img [src]="theProduct.imageUrl"  style="width:100%; object-fit: cover; height:200px;" alt=""   onError="this.src='assets/icon/shop.jpg';" />
+    <ion-card-header text-center>
+      <ion-card-subtitle>{{theProduct.name}} <b>( {{theProduct.duration}} )</b></ion-card-subtitle>
+      <ion-card-title><b>Ugx</b>.{{theProduct.price}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+      
+  <div class="ion-padding">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <ion-list>
+
+        <ion-item>
+            <ion-label position="stacked">Date</ion-label>
+            <ion-input type="date" ngModel name="date" required #dateCtrl="ngModel"></ion-input>
+        </ion-item>
+        <p class="erorr" *ngIf="!dateCtrl.valid && dateCtrl.touched">Please put the desired date.</p>
+
+        <ion-item>
+            <ion-label position="stacked">Time</ion-label>
+            <ion-input type="time" ngModel name="time" required #timeCtrl="ngModel"></ion-input>
+        </ion-item>
+        <p class="erorr" *ngIf="!timeCtrl.valid && timeCtrl.touched">Please put the desired time.</p>
+
+
+      </ion-list>
+    <ion-button  type="submit" routerDirection="root"   shape="round" style="color:white;" expand="block" [disabled]='processing'> {{btnText}} </ion-button>
+
+    </form>
+  </div>
+</ion-content> 

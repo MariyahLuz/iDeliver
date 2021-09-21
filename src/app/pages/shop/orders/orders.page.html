@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar  color="primary" >
+    <ion-title> My Orders </ion-title>
+    <ion-buttons slot="primary">
+        <ion-button  >
+          <ion-icon slot="icon-only" name="calendar"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br>
+
+  <ion-list lines="none">
+    <div padding>
+       <span style="color:#1f8611; margin:10px"> Orders Made to your Shop</span>
+    </div> <br> 
+
+    <div class="empty"  *ngIf="orders?.length === 0 ">
+      <ion-icon name="notifications"></ion-icon>     
+      <h5>No Orders !</h5>
+      <small>
+        No orders have been  made to your shop
+      </small>
+    </div>
+
+    <ion-item  *ngFor="let order of orders" >
+      <ion-thumbnail slot="start">
+        <img [src]="order.product.imageUrl"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{order.user.name}}</h2>
+        <p>{{order.product.name}} | Ugx.{{order.product.price}} </p>
+        <p>Payment on delivery</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="confirmOrder(order)" *ngIf="order.status==='new'">Confirm</ion-button>
+      <ion-button name="call" fill="outline" slot="end" *ngIf="order.status==='pending'" (click)="callUser(order.user.phone)">Contact</ion-button>
+      <ion-button fill="outline"  color="success" disabled slot="end" *ngIf="order.status==='confirmed'" (click)="callUser(order.user.phone)"  >Deliver Product</ion-button>
+      <ion-button fill="outline"  color="danger"  disabled slot="end" *ngIf="order.status==='canceled'">Cancelled</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>     

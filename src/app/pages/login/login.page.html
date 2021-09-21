@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <div class="top" color="primary">
+    <img src="assets/icon/newlogo.svg" /> 
+    <h2>Welcome back!</h2>
+    <small>Login to your account on iDeliver</small>
+  </div> <br>
+
+      <div padding>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+          <ion-list>
+            <ion-item>
+              <ion-input
+                type="tel"
+                ngModel
+                name="phone"
+                #phoneCtrl="ngModel"
+                placeholder="Phone Number"
+              ></ion-input>
+            </ion-item>
+            <p class="error" *ngIf="!phoneCtrl.valid && phoneCtrl.touched">
+              Phone number must be valid.
+            </p>
+    
+            <ion-item>
+              <ion-input
+                type="Password"
+                ngModel
+                name="password"
+                required
+                minilength="6"
+                #passwordCtrl="ngModel"
+                placeholder="Password"
+              ></ion-input>
+            </ion-item>
+            <p class="error" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+              Password should five digits.
+            </p>
+          </ion-list>
+          <ion-button
+            type="submit"
+            routerDirection="root"
+            [disabled]="processing"
+            shape="round"
+            style="color:white"
+            expand="block"
+          >
+            {{ btnText }}
+          </ion-button>
+          <p class="error">{{ error }}</p>
+        </form>
+            <br/>
+            <div text-center>
+              <small> Dont have accout? <a (click)="goToSignup()"><b>Create one here</b></a></small>
+            </div>
+          </div>
+</ion-content>

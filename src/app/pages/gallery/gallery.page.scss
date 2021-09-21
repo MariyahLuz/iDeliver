@@ -1,0 +1,41 @@
+ion-col > div {
+    background-color: #f7f7f7;
+    border: solid 1% #ddd;
+    padding: 10%;
+    height: 100%;
+    width: 100%;
+  }
+  img{
+    width: 100%;
+}
+  
+  .imgContainer{
+      min-height: 150px; 
+      background-size: cover;
+  }
+
+  .empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:100%;
+    text-align: center;
+    padding:30px;
+    h4{
+        color:rgb(207, 161, 161);
+    }
+    small{
+        color:#444;
+    }
+}
+
+.imgContainer{
+    img{
+        border-radius: 10px;
+        height:500px;
+        object-fit: cover;
+        
+    }
+}

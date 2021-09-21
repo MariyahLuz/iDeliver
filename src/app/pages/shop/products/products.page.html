@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar  color="primary" >
+    <ion-title>Available Products in this Shop </ion-title>
+    <ion-buttons slot="primary">
+        <ion-button (click)="addBtnClicked()" *ngIf="openForm" >
+          <ion-icon slot="icon-only" name="calendar"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-searchbar></ion-searchbar>
+<!-- code that will render a list of products -->
+<ion-content>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addBtnClicked()" *ngIf="!openForm">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    </ion-fab>
+  <br>
+  <div *ngIf="openForm" class="form">
+    <ion-item-divider>
+      <ion-label>
+        Add New Product
+      </ion-label>
+    </ion-item-divider>
+
+    <form #form="ngForm" (ngSubmit)="addServices(form)">
+      <ion-item>
+        <ion-label position="stacked">Name of Product</ion-label>
+        <ion-input
+          type="text"
+          ngModel
+          name="name"
+          required
+          #serviceCtrl="ngModel"
+          placeholder="product name"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Price per item (Ugx)</ion-label>
+        <ion-input
+          type="number"
+          ngModel
+          name="price"
+          required
+          #priceCtrl="ngModel"
+          placeholder="Price"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="stacked">Delivery Time</ion-label>
+          <ion-input
+            type="text"
+            ngModel
+            name="duration"
+            required
+            #priceCtrl="ngModel"
+            placeholder="duration"
+          ></ion-input>
+        </ion-item>
+
+      <ion-row>
+          <ion-col size="2">
+            <img [src]="img" alt="" style="width:50px; height:45px; object-fit: cover;">
+          </ion-col>
+          <ion-col size="10">
+              <ion-item>
+                  <input
+                    type="file"
+                    class="fileInput"
+                    (change)="selectImage($event)"
+                  />
+                  <label for="file"><ion-icon name="images"></ion-icon> Select </label>
+                </ion-item>
+          </ion-col>
+        </ion-row>
+
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea
+          ngModel
+          name="description"
+          required
+          #descriptionCtrl="ngModel"
+          placeholder="Description"
+        ></ion-textarea>
+      </ion-item>
+      <br>
+      <div>
+        <ion-button type="submit" expand="block" [disabled]="processing">{{btnText}}</ion-button>
+      </div>
+    </form>
+  </div>
+  <ion-list lines="none">
+    <div padding>
+      Available products for <span style="color:#1f8611;">{{shop.name}}</span>
+    </div> <br> 
+    
+    <div class="empty"  *ngIf="products?.length === 0 ">
+      <ion-icon name="logo-buffer"></ion-icon>     
+      <h5>No Products!</h5>
+      <small>
+        Add all the different products your shop can offer [ add image, price,
+        product name and the description ].
+      </small>
+      <ion-button  fill="clear" display="block" (click)="addBtnClicked()">Add Product</ion-button>
+    </div>
+
+    <ion-item *ngFor="let product of products"  >
+      <ion-thumbnail slot="start">
+        <img [src]="product.imageUrl"  onError="this.src='assets/icon/suits5.jpg';" >
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{product.name }}</h2>
+        <p>Price : Ugx.{{product.price }}</p>
+        <p>{{product.duration}}</p>
+        <p>{{product.description}}</p>
+      </ion-label>
+      <ion-button slot="end"> Edit</ion-button>
+    </ion-item> 
+  </ion-list>  
+</ion-content>
